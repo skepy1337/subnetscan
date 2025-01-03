@@ -1,0 +1,12 @@
+[package]
+name = "subnetscan"
+version = "1.0.0"
+edition = "2021"
+
+[profile.release]
+lto = true
+strip = true
+
+[dependencies]
+ipnet = "2.10.1"
+threadpool = "1.8.1"
