@@ -63,7 +63,11 @@ fn main() {
             }
         }
         Err(e) => {
-            eprintln!("Error parsing CIDR: {}", e);
+            eprintln!(
+                "Error parsing CIDR: {}
+            \rExample: 192.168.1.0/24\n",
+                e
+            );
         }
     }
 
