@@ -1,5 +1,5 @@
 ## Build
-```git clone https://github.com/skep1337/subnetscan```
+```git clone https://github.com/skepy1337/subnetscan```
 
 ```cd subnetscan```
 
