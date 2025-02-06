@@ -16,16 +16,9 @@ macro_rules! parse_arg {
         }
     };
 }
-
-fn is_port_open(ip: &str, port: u16, timeout: u64) -> bool {
-    let ip_addr: Result<IpAddr, _> = ip.parse();
-    if let Ok(ip_addr) = ip_addr {
-        let socket_addr = SocketAddr::new(ip_addr, port);
-        TcpStream::connect_timeout(&socket_addr, Duration::from_millis(timeout)).is_ok()
-    } else {
-        eprintln!("Could not parse ip: {}", ip);
-        std::process::exit(1);
-    }
+fn is_port_open(ip: IpAddr, port: u16, timeout: u64) -> bool {
+    let socket_addr = SocketAddr::new(ip, port);
+    TcpStream::connect_timeout(&socket_addr, Duration::from_millis(timeout)).is_ok()
 }
 
 fn main() {
@@ -56,7 +49,7 @@ fn main() {
         Ok(ipnet) => {
             for ip in ipnet.hosts().into_iter() {
                 pool.execute(move || {
-                    if is_port_open(&ip.to_string(), port, timeout) {
+                    if is_port_open(ip, port, timeout) {
                         println!("{}", ip);
                     }
                 });
