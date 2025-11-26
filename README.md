@@ -1,12 +1,9 @@
-## Build
-```git clone https://github.com/skepy1337/subnetscan```
-
-```cd subnetscan```
-
-```cargo b -r```
-
 ## Usage
 
+Install rustup on your system https://rustup.rs/
+
+```cargo install --git https://github.com/skepy1337/subnetscan```
+
 ```
-./subnetscan <subnet> <port to probe on>
+subnetscan <subnet> <port to probe on>
 ```
